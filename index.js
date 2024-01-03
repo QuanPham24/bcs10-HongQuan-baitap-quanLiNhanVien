@@ -13,6 +13,7 @@ function renderDsNv(){
         <td>${data.chucVu}</td>
         <td>${data.tongLuong()}</td>
         <td>${data.xepLoai()}</td>
+        <td><button class='btn btn-danger' onclick="xoaNv('${data.taiKhoan}')">X</button></td>
         </tr>`;
         contentHtml = contentHtml + trString;
     }
@@ -62,5 +63,16 @@ function themNv(){
     }
     
     dsNv.push(nv);
+    renderDsNv();
+}
+
+function xoaNv(taiKhoan){
+    var index;
+    for(var i = 0; i < dsNv.length;i++){
+        if(dsNv[i].taiKhoan == taiKhoan){
+            index = i;
+        }
+    }
+    dsNv.splice(index,1);
     renderDsNv();
 }
