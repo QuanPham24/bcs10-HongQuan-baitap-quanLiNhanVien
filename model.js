@@ -17,11 +17,11 @@ function NhanVien(account,ten,email,pass,date,luong,chucVu,gioLam){
         }
     };
     this.xepLoai = function(){
-        if(this.gio >= 192){
+        if(this.gioLam >= 192){
             return "excellence";
-        }else if(this.gio >= 176){
+        }else if(this.gioLam >= 176){
             return "gioi";
-        }else if(this.gio >= 160){
+        }else if(this.gioLam >= 160){
             return "kha";
         }else{
             return "trung binh";

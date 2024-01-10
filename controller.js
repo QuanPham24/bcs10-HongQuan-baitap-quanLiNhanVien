@@ -29,11 +29,11 @@ function getInfoFromWeb(){
             }
         },
         xepLoai:function(){
-            if(this.gio >= 192){
+            if(this.gioLam >= 192){
                 return "excellence";
-            }else if(this.gio >= 176){
+            }else if(this.gioLam >= 176){
                 return "gioi";
-            }else if(this.gio >= 160){
+            }else if(this.gioLam >= 160){
                 return "kha";
             }else{
                 return "trung binh";
@@ -57,7 +57,8 @@ function renderDsNv(){
         <td>${data.chucVu}</td>
         <td>${data.tongLuong()}</td>
         <td>${data.xepLoai()}</td>
-        <td><button class='btn btn-danger' onclick="xoaNv('${data.taiKhoan}')">X</button></td>
+        <td><button class='btn btn-danger' onclick="xoaNv('${data.taiKhoan}')">X</button>
+        <button class='btn btn-warning' onclick="EditNv('${data.taiKhoan}')">Edit</button></td>
         </tr>`;
         contentHtml = contentHtml + trString;
     }
