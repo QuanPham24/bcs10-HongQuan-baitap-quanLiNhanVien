@@ -58,7 +58,7 @@ function renderDsNv(){
         <td>${data.tongLuong()}</td>
         <td>${data.xepLoai()}</td>
         <td><button class='btn btn-danger' onclick="xoaNv('${data.taiKhoan}')">X</button>
-        <button class='btn btn-warning' onclick="EditNv('${data.taiKhoan}')">Edit</button></td>
+        <button class='btn btn-warning' onclick="EditNv('${data.taiKhoan}')" data-toggle="modal" data-target="#myModal">Edit</button></td>
         </tr>`;
         contentHtml = contentHtml + trString;
     }

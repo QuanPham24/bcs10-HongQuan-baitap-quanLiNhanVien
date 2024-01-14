@@ -24,13 +24,44 @@ renderDsNv();
 function themNv(){
    var nv = getInfoFromWeb();
     
-    dsNv.push(nv);
-    // keep data when load page
-    var dataJson = JSON.stringify(dsNv);
-    localStorage.setItem("DSNV",dataJson);
+    // Validate data truoc khi them
+    var isValid = true;
 
-    // render lai lay out sau khi them thanh cong
-    renderDsNv();
+    // kiem tra tai khoan
+    isValid = kiemTraRong(nv.taiKhoan,"tbTKNV") && kiemTraKySo(nv.taiKhoan) && kiemTraTrung(nv.taiKhoan,dsNv,"tbTKNV");
+
+    // kiem tra Ten
+    isValid = isValid & (kiemTraRong(nv.name,"tbTen") && kiemTraTen(nv.name));
+
+    // kiem tra email
+    isValid = isValid & (kiemTraRong(nv.email,"tbEmail") && kiemTraEmail(nv.email));
+
+    // Kiem Tra Mat Khau
+    isValid = isValid & (kiemTraRong(nv.password,"tbMatKhau") && kiemTraPassword(nv.password));
+
+    // Kiem tra ngay
+    isValid &= (kiemTraRong(nv.ngayLam,"tbNgay") && kiemTraNgay(nv.ngayLam));
+
+    // kiem tra luong
+    isValid &= (kiemTraRong(nv.luong,"tbLuongCB") && kiemTraLuong(nv.luong));
+
+    // kiem tra Chuc vu
+    isValid &= (kiemTraRong(nv.chucVu,"tbChucVu") && kiemTraChucVu(nv.chucVu));
+
+    // Kiem tra gio lam
+    isValid &= (kiemTraRong(nv.gioLam,"tbGiolam") && kiemTraGio(nv.gioLam));
+    
+
+    if(isValid){
+
+        dsNv.push(nv);
+        // keep data when load page
+        var dataJson = JSON.stringify(dsNv);
+        localStorage.setItem("DSNV",dataJson);
+        
+        // render lai lay out sau khi them thanh cong
+        renderDsNv();
+    }
 }
 
 function xoaNv(taiKhoan){
